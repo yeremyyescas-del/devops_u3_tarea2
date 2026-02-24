@@ -1,16 +1,27 @@
-name: package
+name: U3 Tarea 2 CI
 
 on:
   push:
     branches:
-      - master
+      - main
+  workflow_dispatch:
 
 jobs:
-  package:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Hugo Extended
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.121.2/hugo_extended_0.121.2_Linux-64bit.tar.gz
+          tar -xzf hugo_extended_0.121.2_Linux-64bit.tar.gz
+          sudo mv hugo /usr/local/bin/
+
+      - name: Verify Hugo version
+        run: hugo version
+
       - name: Build site
-        run: make build
-      - name: Package site
-        run: make package
+        run: hugo -d dist
