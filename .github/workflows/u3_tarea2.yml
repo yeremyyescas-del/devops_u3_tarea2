@@ -1,0 +1,16 @@
+name: package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build site
+        run: make build
+      - name: Package site
+        run: make package
