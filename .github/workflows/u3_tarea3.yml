@@ -1,5 +1,8 @@
 name: u3_tarea3
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
