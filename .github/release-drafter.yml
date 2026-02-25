@@ -1,0 +1,14 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+
+categories:
+  - title: 'Cambios'
+    labels:
+      - '*'
+
+change-template: '- $TITLE (#$NUMBER)'
+
+template: |
+  ## Cambios
+
+  $CHANGES
